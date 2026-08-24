@@ -1,0 +1,8 @@
+keys: &me
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN76Gtr2Ay5H3KBPwFEzAQjnteHq5/0oPIfhh4qrC4xc blmille1@Millers-Air # ~/.ssh/id_ed25519.pub
+  - age166nmcftgtfmy3khtav4awgcxv9vq8rfkfvadzjng903psaf93qcsqsjuuc # ~/.config/sops/age/keys.txt
+creation_rules:
+  # anchored, so a stray home/secrets/home.yaml is refused instead of encrypted
+  - path_regex: ^secrets/home\.ya?ml$
+    key_groups:
+      - age: *me

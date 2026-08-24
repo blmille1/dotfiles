@@ -1,0 +1,6 @@
+- Use "-" not "—"
+- No co-author trailers on commits
+- Don't edit CHANGELOG.md or auto-generated files
+- Prefer quality, simplicity, robustness, scalability, and maintainability over development cost
+- Reproduce bugs E2E as an end user would before fixing
+- Fix UI, lint, test, and flakiness issues you notice, even if unrelated to your task

@@ -1,0 +1,33 @@
+{
+  "env": {
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "us.anthropic.claude-sonnet-4-6"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "WebFetch(domain:docs.npmjs.com)",
+      "mcp__plugin_context7_context7__query-docs",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:search.maven.org)"
+    ]
+  },
+  "model": "us.anthropic.claude-opus-5",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "theme": "dark"
+}

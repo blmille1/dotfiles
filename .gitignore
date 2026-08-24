@@ -1,0 +1,22 @@
+result
+result-*
+.direnv/
+
+# Teaching workspace: local lesson materials are not part of the dotfiles repo
+teach/
+
+# Local machine-specific configuration
+home/files/.npmrc
+home/files/.gitguardian.yaml
+
+# --- never commit secrets: keys and encryption material ---
+# SSH / TLS private keys
+id_rsa
+id_ed25519
+id_ecdsa
+*.pem
+*.key
+# age / sops private keys (the root-of-trust that can never live in-repo)
+*.age
+keys.txt
+key.txt

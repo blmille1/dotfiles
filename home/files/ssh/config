@@ -1,0 +1,13 @@
+Host *
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile=~/.ssh/known_hosts
+
+Host iris-server
+    HostName iris-server
+    User brandon
+
+Host git-codecommit.*.amazonaws.com
+    User APKA5MZPEOJBICXWBQH7
+    IdentityFile ~/.ssh/xeniafurniture_rsa
