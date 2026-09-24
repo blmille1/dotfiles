@@ -4,6 +4,8 @@ result-*
 
 # Teaching workspace: local lesson materials are not part of the dotfiles repo
 teach/
+# Lavish output
+.lavish/
 
 # Local machine-specific configuration
 home/files/.npmrc
