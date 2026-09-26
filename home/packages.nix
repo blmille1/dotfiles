@@ -10,6 +10,7 @@
     jless
     jq
     nerd-fonts.hack
+    nodejs_24 # Node.js 24 and its bundled npm runtime
     pipx  # Python-CLI installer.
     ripgrep
     sops  # uses age, encrypts individual properties in files vs whole file

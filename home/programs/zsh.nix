@@ -67,11 +67,6 @@
       zstyle ':completion:*' completer _expand _complete _correct
       zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
-      # nvm (kept as-is for now; a nix-native node is a later option)
-      export NVM_DIR="$HOME/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
       unalias - - 2>/dev/null
 
       # git-commit skeleton widget: keymap-independent (vi-mode safe), lands the

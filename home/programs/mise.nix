@@ -21,7 +21,8 @@
   # Net effect: this config file is authoritative — ad-hoc `mise use` installs
   # will be removed on the next switch.
   home.activation.miseSync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    export PATH="${pkgs.pipx}/bin:${pkgs.python3}/bin:$PATH"
+    # The npm-backed Pi install needs Node/npm in non-interactive activation.
+    export PATH="${pkgs.nodejs_24}/bin:${pkgs.pipx}/bin:${pkgs.python3}/bin:$PATH"
     run ${pkgs.mise}/bin/mise install --yes
     run ${pkgs.mise}/bin/mise prune --yes
   '';
