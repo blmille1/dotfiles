@@ -10,6 +10,7 @@
       tools = {
         "claude-code" = { version = "latest"; minimum_release_age = "8h"; };
         copilot = { version = "latest"; minimum_release_age = "8h"; };
+        "github:kenn-io/agentsview" = { version = "latest"; minimum_release_age = "8h"; };
         "npm:@earendil-works/pi-coding-agent" = { version = "latest"; minimum_release_age = "8h"; };
       };
     };
