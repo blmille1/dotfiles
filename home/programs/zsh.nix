@@ -39,6 +39,7 @@
       json2yaml = "ruby -ryaml -rjson -e 'puts YAML.dump(JSON.parse(STDIN.read))'";
 
       si = "ssh brandon@iris-server";
+      hi = "herdr --remote iris-server";
       gi = "ssh -N -L 18789:127.0.0.1:18789 brandon@iris-server";
     };
 
