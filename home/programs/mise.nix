@@ -8,6 +8,7 @@
       # package set. This is the single source of truth. Add or remove a line,
       # then `hms` - the hook below reconciles.
       tools = {
+        aws = { version = "latest"; minimum_release_age = "8h"; };
         "aws-sam-cli" = { version = "latest"; minimum_release_age = "8h"; };
         "claude-code" = { version = "latest"; minimum_release_age = "8h"; };
         copilot = { version = "latest"; minimum_release_age = "8h"; };
@@ -25,7 +26,7 @@
   # will be removed on the next switch.
   home.activation.miseSync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     # The npm-backed Pi install needs Node/npm in non-interactive activation.
-    export PATH="${pkgs.nodejs_26}/bin:${pkgs.pipx}/bin:${pkgs.python3}/bin:$PATH"
+    export PATH="/usr/sbin:${pkgs.nodejs_26}/bin:${pkgs.pipx}/bin:${pkgs.python3}/bin:$PATH"
     run ${pkgs.mise}/bin/mise install --yes
     run ${pkgs.mise}/bin/mise prune --yes
   '';
