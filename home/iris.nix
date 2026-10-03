@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ ./common.nix ];
 
   home.username = "brandon";
@@ -98,7 +98,7 @@ EOF
     trap 'rm -f "$config_tmp"' EXIT
     marker_start="# BEGIN Home Manager AgentsView remote host"
     marker_end="# END Home Manager AgentsView remote host"
-    if ! awk -v start="$marker_start" -v end="$marker_end" '
+    if ! ${pkgs.gawk}/bin/awk -v start="$marker_start" -v end="$marker_end" '
       $0 == start { if (inside) invalid=1; inside=1; starts++; next }
       $0 == end { if (!inside) invalid=1; inside=0; ends++; next }
       !inside { print }
