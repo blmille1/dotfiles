@@ -29,8 +29,9 @@ EOF
     fi
 
     tailscale_ip=""
-    if command -v tailscale >/dev/null 2>&1; then
-      tailscale_ip="$(tailscale ip -4 2>/dev/null || true)"
+    tailscale_bin="/usr/bin/tailscale"
+    if [ -x "$tailscale_bin" ]; then
+      tailscale_ip="$("$tailscale_bin" ip -4 2>/dev/null || true)"
     fi
 
     set_toml_string() {
