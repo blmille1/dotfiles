@@ -25,6 +25,12 @@
       "fluidvoice"
       "visual-studio-code"
     ];
+
+    # Manage the already-installed Mac App Store variant. Do not replace it with
+    # the standalone Homebrew cask; Tailscale warns against mixing variants.
+    masApps = {
+      "Tailscale" = 1475387142;
+    };
   };
 
   system = {
