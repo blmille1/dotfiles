@@ -4,12 +4,13 @@
     enableZshIntegration = true;
 
     globalConfig = {
-      # Declarative inventory of floating-version CLIs managed independently
-      # of the flake-pinned packages. This is the single source of truth. Add
-      # or remove a line, then `hms` - the hook below reconciles.
+      # Declarative inventory of CLI tools managed independently of the Nix
+      # package set. This is the single source of truth. Add or remove a line,
+      # then `hms` - the hook below reconciles.
       tools = {
         "claude-code" = { version = "latest"; minimum_release_age = "8h"; };
         copilot = { version = "latest"; minimum_release_age = "8h"; };
+        herdr = { version = "latest"; minimum_release_age = "8h"; };
         "github:kenn-io/agentsview" = { version = "latest"; minimum_release_age = "8h"; };
         "npm:@earendil-works/pi-coding-agent" = { version = "latest"; minimum_release_age = "8h"; };
       };
