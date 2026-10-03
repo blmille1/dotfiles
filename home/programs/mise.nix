@@ -8,6 +8,7 @@
       # package set. This is the single source of truth. Add or remove a line,
       # then `hms` - the hook below reconciles.
       tools = {
+        "aws-sam-cli" = { version = "latest"; minimum_release_age = "8h"; };
         "claude-code" = { version = "latest"; minimum_release_age = "8h"; };
         copilot = { version = "latest"; minimum_release_age = "8h"; };
         herdr = { version = "latest"; minimum_release_age = "8h"; };
