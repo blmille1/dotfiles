@@ -14,6 +14,9 @@ in
 rec {
   imports = [ ./common.nix ];
   home.username = "blmille1";
+  # Nixpkgs packages Apple's signed release for Apple silicon Macs. Keep it out
+  # of the shared package set because the CLI is macOS-only.
+  home.packages = [ pkgs.container ];
   home.homeDirectory = "/Users/blmille1";
 
   programs.zsh.profileExtra = ''
