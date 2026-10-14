@@ -25,6 +25,7 @@
 
     casks = [
       # "bitwarden" # Re-enable deliberately after reviewing Homebrew cleanup behavior.
+      "davit"
       "fluidvoice"
       "visual-studio-code"
     ];
