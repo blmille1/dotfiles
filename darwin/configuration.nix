@@ -16,6 +16,9 @@
     taps = [ ];
 
     brews = [
+      # Use Homebrew's complete package; the Nix package rewrites the guest
+      # init script's shebang to a host-only Nix store path.
+      "container"
       "ollama"
       "gnupg"
     ];

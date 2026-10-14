@@ -14,9 +14,6 @@ in
 rec {
   imports = [ ./common.nix ];
   home.username = "blmille1";
-  # Nixpkgs packages Apple's signed release for Apple silicon Macs. Keep it out
-  # of the shared package set because the CLI is macOS-only.
-  home.packages = [ pkgs.container ];
   home.homeDirectory = "/Users/blmille1";
 
   programs.zsh.profileExtra = ''
@@ -25,6 +22,25 @@ rec {
   # Tailscale's Mac App Store build bundles its CLI inside the app.
   programs.zsh.shellAliases.tailscale =
     "TAILSCALE_BE_CLI=1 /Applications/Tailscale.app/Contents/MacOS/Tailscale";
+
+  # Start Apple Container in the user's launchd domain. nix-darwin applies its
+  # Homebrew bundle under sudo, so starting the service there targets the wrong
+  # launchd domain.
+  launchd.agents.container = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/opt/homebrew/opt/container/bin/container"
+        "system"
+        "start"
+        "--disable-kernel-install"
+      ];
+      RunAtLoad = true;
+      WorkingDirectory = "/opt/homebrew/var";
+      StandardOutPath = "/opt/homebrew/var/log/container.log";
+      StandardErrorPath = "/opt/homebrew/var/log/container.log";
+    };
+  };
 
   # Start the existing App Store client at each GUI login. Its network extension
   # handles the VPN connection; no separate Homebrew daemon is needed.
