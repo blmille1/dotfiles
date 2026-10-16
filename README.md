@@ -69,6 +69,16 @@ home-manager switch --flake ~/.dotfiles#<username>@<hostname>
 
 The Home Manager configuration installs a global Git pre-commit hook that runs Gitleaks against staged changes.
 
+## VoiceStudio
+
+VoiceStudio is available for macOS, Windows, and Linux. This flake's macOS host is Apple Silicon; Intel Macs can use the UI but not the local AI backend. There is no Homebrew cask for VoiceStudio. mise's `macos-app` bootstrap manager can install a checksummed DMG, but it requires a manually pinned version and checksum, and this repo's mise activation currently manages CLI tools rather than bootstrap packages. For easy updates to the latest stable release, use VoiceStudio's upstream installer:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/debpalash/VoiceStudio/main/scripts/install.sh | sh
+```
+
+This runs VoiceStudio's upstream installer, which selects the native Mac build, downloads the latest stable release, and verifies it against the release's published SHA-256 checksum. Updates are manual: rerun the command to install the latest release. The current app build is not notarized, so macOS may require a one-time Finder right-click → Open approval on first launch. Its local backend and models are downloaded/configured on first run and can require around 10 GB of disk space.
+
 ## Daily commands
 
 Apply macOS system changes:

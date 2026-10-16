@@ -27,6 +27,7 @@
       # "bitwarden" # Re-enable deliberately after reviewing Homebrew cleanup behavior.
       "davit"
       "fluidvoice"
+      "raspberry-pi-imager"
       "visual-studio-code"
     ];
 

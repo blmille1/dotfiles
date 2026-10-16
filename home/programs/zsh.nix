@@ -30,7 +30,6 @@
       reload  = "source ~/.zshrc";
 
       # nix
-      hms     = "home-manager switch --flake ~/.dotfiles";
       drs     = "sudo darwin-rebuild switch --flake ~/.dotfiles";
 
       docker_clean_images = "docker rmi $(docker images -a --filter=dangling=true -q)";
@@ -46,6 +45,17 @@
     # ── everything without a dedicated option ──
     initContent = ''
       set -o inc_append_history
+
+      # Select the matching Home Manager output for this host.
+      function hms {
+        local host
+        if [[ "$OSTYPE" == darwin* ]]; then
+          host="$(scutil --get LocalHostName)" || return
+        else
+          host="$(hostname -s)" || return
+        fi
+        home-manager switch --flake "$HOME/.dotfiles#$(id -un)@$host" "$@"
+      }
 
       # suffix aliases
       alias -s json="jless"
