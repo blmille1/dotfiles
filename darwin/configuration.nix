@@ -28,6 +28,7 @@
       "davit"
       "fluidvoice"
       "raspberry-pi-imager"
+      "tigervnc"
       "visual-studio-code"
     ];
 
