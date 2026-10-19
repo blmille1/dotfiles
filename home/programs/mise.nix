@@ -11,7 +11,6 @@
         "aqua:atuinsh/atuin" = { version = "latest"; minimum_release_age = "8h"; };
         aws = { version = "latest"; minimum_release_age = "8h"; };
         "aws-sam-cli" = { version = "latest"; minimum_release_age = "8h"; };
-        "claude-code" = { version = "latest"; minimum_release_age = "8h"; };
         copilot = { version = "latest"; minimum_release_age = "8h"; };
         herdr = { version = "latest"; minimum_release_age = "8h"; };
         "github:kenn-io/agentsview" = { version = "latest"; minimum_release_age = "8h"; };
