@@ -3,6 +3,7 @@
     age # modern file encryption
     bat
     btop  # resource monitor (htop-style) - CPU, mem, disk, net, procs
+    borgmatic # backup orchestration; includes borgbackup
     dust  # `dust` - intuitive du replacement (tree of what's eating disk).
     fd
     fzf

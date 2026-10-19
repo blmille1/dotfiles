@@ -4,6 +4,41 @@
   home.username = "brandon";
   home.homeDirectory = "/home/brandon";
 
+  # Select this host's Borgmatic configuration from the repository.
+  home.file.".config/borgmatic/config.yaml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/files/borgmatic/iris-server.yaml";
+
+  sops.secrets."borgmatic-passphrase" = {
+    key = "BORGMATIC_PASSPHRASE";
+    mode = "0400";
+  };
+
+  # Run after Home Assistant's early-morning backup window. Assert that the
+  # backup disk is mounted so a missing disk is reported as a failed backup,
+  # rather than silently skipping or writing to the root filesystem.
+  systemd.user.services.borgmatic-backup = {
+    Unit = {
+      Description = "Borgmatic backup for iris-server";
+      AssertPathIsMountPoint = "/mnt/backup";
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.borgmatic}/bin/borgmatic --verbosity 1 --config ${config.home.homeDirectory}/.config/borgmatic/config.yaml create prune compact check";
+      TimeoutStartSec = "6h";
+    };
+  };
+
+  systemd.user.timers.borgmatic-backup = {
+    Unit.Description = "Daily Borgmatic backup for iris-server";
+    Timer = {
+      OnCalendar = "*-*-* 06:00:00 UTC";
+      AccuracySec = "1min";
+      Persistent = true;
+      Unit = "borgmatic-backup.service";
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
+
   sops.secrets."agentsview-mac-token" = {
     key = "AGENTSVIEW_MAC_TOKEN";
   };
