@@ -1,6 +1,7 @@
 # Host-specific Borgmatic configuration for iris-server.
 source_directories:
   - ~/homeassistant/config/backups
+  - ~/homeassistant/matter-server/data
   - ~/homeassistant/docker-compose.yml
   - ~/.dotfiles/home/files/borgmatic/iris-server.yaml
 
