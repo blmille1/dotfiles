@@ -13,9 +13,9 @@
     mode = "0400";
   };
 
-  # Run after Home Assistant's early-morning backup window. Assert that the
-  # backup disk is mounted so a missing disk is reported as a failed backup,
-  # rather than silently skipping or writing to the root filesystem.
+  # Run after Home Assistant's observed daily backup window (around 10:00 UTC),
+  # with time for the backup to finish. Assert that the backup disk is mounted
+  # so a missing disk is reported as a failure instead of writing to root.
   systemd.user.services.borgmatic-backup = {
     Unit = {
       Description = "Borgmatic backup for iris-server";
@@ -31,7 +31,7 @@
   systemd.user.timers.borgmatic-backup = {
     Unit.Description = "Daily Borgmatic backup for iris-server";
     Timer = {
-      OnCalendar = "*-*-* 06:00:00 UTC";
+      OnCalendar = "*-*-* 12:00:00 UTC";
       AccuracySec = "1min";
       Persistent = true;
       Unit = "borgmatic-backup.service";

@@ -3,7 +3,6 @@ source_directories:
   - ~/homeassistant/config/backups
   - ~/homeassistant/docker-compose.yml
   - ~/.dotfiles/home/files/borgmatic/iris-server.yaml
-  - ~/bin/backup_homeassistant_live.sh
 
 # Read the passphrase from the SOPS-deployed user secret, never from Git.
 encryption_passcommand: "cat /home/brandon/.config/sops-nix/secrets/borgmatic-passphrase"
